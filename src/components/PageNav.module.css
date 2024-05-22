@@ -1,0 +1,9 @@
+.nav {
+	background: orange;
+}
+
+.nav ul {
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+}
