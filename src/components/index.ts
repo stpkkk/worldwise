@@ -10,6 +10,8 @@ import SpinnerFullPage from './SpinnerFullPage'
 import User from './User'
 import Sidebar from './Sidebar'
 import Map from './Map'
+import CityList from './CityList'
+import CityItem from './CityItem'
 
 export {
 	PageNav,
@@ -24,4 +26,6 @@ export {
 	User,
 	Sidebar,
 	Map,
+	CityList,
+	CityItem,
 }
