@@ -1,12 +1,20 @@
-import styles from "./CountryItem.module.css";
+import { flagemojiToPNG } from '../utils'
+import styles from './CountryItem.module.css'
 
-function CountryItem({ country }) {
-  return (
-    <li className={styles.countryItem}>
-      <span>{country.emoji}</span>
-      <span>{country.country}</span>
-    </li>
-  );
+type CountryProps = {
+	country: {
+		country: string
+		emoji: string
+	}
 }
 
-export default CountryItem;
+function CountryItem({ country }: CountryProps) {
+	return (
+		<li className={styles.countryItem}>
+			<span>{flagemojiToPNG(country.emoji)}</span>
+			<span>{country.country}</span>
+		</li>
+	)
+}
+
+export default CountryItem

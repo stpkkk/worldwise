@@ -11,7 +11,7 @@ type CityListProps = {
 
 function CityList({ cities, isLoading }: CityListProps) {
 	if (isLoading) return <Spinner />
-	if (!cities.length)
+	if (!cities.length && isLoading)
 		return (
 			<Message message='Add your first city by clicking on a city on the map' />
 		)

@@ -12,12 +12,14 @@ import Sidebar from './Sidebar'
 import Map from './Map'
 import CityList from './CityList'
 import CityItem from './CityItem'
+import CountryList from './CountryList'
 
 export {
 	PageNav,
 	AppNav,
 	Logo,
 	City,
+	CountryList,
 	CountryItem,
 	Form,
 	Message,
