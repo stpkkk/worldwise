@@ -1,9 +1,10 @@
-import { City } from '../types'
+import { Link } from 'react-router-dom'
+import { CityType } from '../types'
 import { flagemojiToPNG } from '../utils'
 import styles from './CityItem.module.css'
 
 type CityItemProps = {
-	city: City
+	city: CityType
 }
 
 const formatDate = (date: Date) =>
@@ -14,14 +15,19 @@ const formatDate = (date: Date) =>
 	}).format(new Date(date))
 
 function CityItem({ city }: CityItemProps) {
-	const { cityName, emoji, date } = city
+	const { id, cityName, emoji, date, position } = city
 
 	return (
-		<li className={styles.CityItem}>
-			<span className={styles.emoji}>{flagemojiToPNG(emoji)}</span>
-			<h3 className={styles.name}>{cityName}</h3>
-			<time className={styles.date}>({formatDate(date)})</time>
-			<button className={styles.deleteBtn}>&times;</button>
+		<li>
+			<Link
+				className={styles.CityItem}
+				to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+			>
+				<span className={styles.emoji}>{flagemojiToPNG(emoji)}</span>
+				<h3 className={styles.name}>{cityName}</h3>
+				<time className={styles.date}>({formatDate(date)})</time>
+				<button className={styles.deleteBtn}>&times;</button>
+			</Link>
 		</li>
 	)
 }

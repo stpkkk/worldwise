@@ -1,5 +1,5 @@
 export type Position = { lat: number; lng: number }
-export type City = {
+export type CityType = {
 	cityName: string
 	country: string
 	emoji: string

@@ -1,11 +1,11 @@
-import { City } from '../types'
+import { CityType } from '../types'
 import CountryItem from './CountryItem'
 import styles from './CountryList.module.css'
 import Message from './Message'
 import Spinner from './Spinner'
 
 type CountriesListProps = {
-	cities: City[]
+	cities: CityType[]
 	isLoading: boolean
 }
 
@@ -19,8 +19,6 @@ function CountryList({ cities, isLoading }: CountriesListProps) {
 		},
 		[]
 	)
-
-	console.log('countries:', countries)
 
 	if (isLoading) return <Spinner />
 	if (!countries.length && !isLoading)

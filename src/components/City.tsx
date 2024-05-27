@@ -1,4 +1,11 @@
+import { useParams } from 'react-router-dom'
 import styles from './City.module.css'
+import { CityType } from '../types'
+import { flagemojiToPNG } from '../utils'
+
+type CityProps = {
+	cities: CityType[]
+}
 
 const formatDate = (date: any) =>
 	new Intl.DateTimeFormat('en', {
@@ -8,13 +15,12 @@ const formatDate = (date: any) =>
 		weekday: 'long',
 	}).format(new Date(date))
 
-function City() {
-	// TEMP DATA
-	const currentCity = {
-		cityName: 'Lisbon',
-		emoji: '🇵🇹',
-		date: '2027-10-31T15:59:59.138Z',
-		notes: 'My favorite city so far!',
+function City({ cities }: CityProps) {
+	const { id } = useParams<{ id: string }>()
+	const currentCity = cities.find(city => city.id === id)
+
+	if (!currentCity) {
+		return <div>City not found</div>
 	}
 
 	const { cityName, emoji, date, notes } = currentCity
@@ -24,7 +30,7 @@ function City() {
 			<div className={styles.row}>
 				<h6>City name</h6>
 				<h3>
-					<span>{emoji}</span> {cityName}
+					<span>{flagemojiToPNG(emoji)}</span> {cityName}
 				</h3>
 			</div>
 

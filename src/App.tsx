@@ -9,13 +9,13 @@ import {
 	Pricing,
 	Product,
 } from './pages'
-import { CityList, CountryList } from './components'
-import { City } from './types'
+import { City, CityList, CountryList } from './components'
+import { CityType } from './types'
 
 const BASE_URL = 'http://localhost:8000'
 
 function App() {
-	const [cities, setCities] = useState<City[]>([])
+	const [cities, setCities] = useState<CityType[]>([])
 	const [isLoading, setIsLoading] = useState(false)
 
 	async function fetchCities() {
@@ -51,6 +51,7 @@ function App() {
 						path='cities'
 						element={<CityList cities={cities} isLoading={isLoading} />}
 					/>
+					<Route path='cities/:id' element={<City cities={cities} />} />
 					<Route
 						path='countries'
 						element={<CountryList cities={cities} isLoading={isLoading} />}
