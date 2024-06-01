@@ -1,4 +1,4 @@
-import { flagemojiToPNG } from '../utils'
+import { flagEmojiToPNG } from '../utils'
 import styles from './CountryItem.module.css'
 
 type CountryProps = {
@@ -11,7 +11,7 @@ type CountryProps = {
 function CountryItem({ country }: CountryProps) {
 	return (
 		<li className={styles.countryItem}>
-			<span>{flagemojiToPNG(country.emoji)}</span>
+			<span>{flagEmojiToPNG(country.emoji)}</span>
 			<span>{country.country}</span>
 		</li>
 	)

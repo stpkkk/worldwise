@@ -1,1 +1,1 @@
-export * from './flagemojiToPNG'
+export * from './flagEmojiToPNG'

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import styles from './City.module.css'
 import { CityType } from '../types'
-import { flagemojiToPNG } from '../utils'
+import { flagEmojiToPNG } from '../utils'
 
 type CityProps = {
 	cities: CityType[]
@@ -30,7 +30,7 @@ function City({ cities }: CityProps) {
 			<div className={styles.row}>
 				<h6>City name</h6>
 				<h3>
-					<span>{flagemojiToPNG(emoji)}</span> {cityName}
+					<span>{flagEmojiToPNG(emoji)}</span> {cityName}
 				</h3>
 			</div>
 
