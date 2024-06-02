@@ -13,6 +13,7 @@ import Map from './Map'
 import CityList from './CityList'
 import CityItem from './CityItem'
 import CountryList from './CountryList'
+import Button from './Button'
 
 export {
 	PageNav,
@@ -30,4 +31,5 @@ export {
 	Map,
 	CityList,
 	CityItem,
+	Button,
 }
