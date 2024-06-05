@@ -1,11 +1,7 @@
 import { useParams } from 'react-router-dom'
 import styles from './City.module.css'
-import { CityType } from '../types'
 import { flagEmojiToPNG } from '../utils'
-
-type CityProps = {
-	cities: CityType[]
-}
+import { useCities } from '../context/CitiesContext'
 
 const formatDate = (date: any) =>
 	new Intl.DateTimeFormat('en', {
@@ -15,8 +11,10 @@ const formatDate = (date: any) =>
 		weekday: 'long',
 	}).format(new Date(date))
 
-function City({ cities }: CityProps) {
+function City() {
 	const { id } = useParams<{ id: string }>()
+	const { cities } = useCities()
+
 	const currentCity = cities.find(city => city.id === id)
 
 	if (!currentCity) {

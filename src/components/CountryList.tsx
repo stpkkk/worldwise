@@ -1,15 +1,12 @@
-import { CityType } from '../types'
+import { useCities } from '../context/CitiesContext'
 import CountryItem from './CountryItem'
 import styles from './CountryList.module.css'
 import Message from './Message'
 import Spinner from './Spinner'
 
-type CountriesListProps = {
-	cities: CityType[]
-	isLoading: boolean
-}
+function CountryList() {
+	const { isLoading, cities } = useCities()
 
-function CountryList({ cities, isLoading }: CountriesListProps) {
 	const countries = cities.reduce(
 		(arr: { country: string; emoji: string }[], city) => {
 			if (!arr.some(el => el.country === city.country)) {
