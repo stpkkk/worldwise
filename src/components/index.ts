@@ -14,6 +14,7 @@ import CityList from './CityList'
 import CityItem from './CityItem'
 import CountryList from './CountryList'
 import Button from './Button'
+import BackButton from './BackButton'
 
 export {
 	PageNav,
@@ -32,4 +33,5 @@ export {
 	CityList,
 	CityItem,
 	Button,
+	BackButton,
 }

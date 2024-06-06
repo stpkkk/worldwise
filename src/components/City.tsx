@@ -1,9 +1,13 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from './City.module.css'
 import { flagEmojiToPNG } from '../utils'
 import { useCities } from '../context/CitiesContext'
+import { CityType } from '../types'
+import Spinner from './Spinner'
+import BackButton from './BackButton'
 
-const formatDate = (date: any) =>
+const formatDate = (date: Date) =>
 	new Intl.DateTimeFormat('en', {
 		day: 'numeric',
 		month: 'long',
@@ -12,23 +16,27 @@ const formatDate = (date: any) =>
 	}).format(new Date(date))
 
 function City() {
-	const { id } = useParams<{ id: string }>()
-	const { cities } = useCities()
+	const { id } = useParams()
+	const { getCity, currentCity, isLoading } = useCities()
 
-	const currentCity = cities.find(city => city.id === id)
+	useEffect(() => {
+		getCity(id)
+	}, [id])
+
+	const { cityName, emoji, date, notes } = currentCity as CityType
+
+	if (isLoading) return <Spinner />
 
 	if (!currentCity) {
 		return <div>City not found</div>
 	}
-
-	const { cityName, emoji, date, notes } = currentCity
 
 	return (
 		<div className={styles.city}>
 			<div className={styles.row}>
 				<h6>City name</h6>
 				<h3>
-					<span>{flagEmojiToPNG(emoji)}</span> {cityName}
+					<span>{emoji && flagEmojiToPNG(emoji)}</span> {cityName}
 				</h3>
 			</div>
 
@@ -55,7 +63,9 @@ function City() {
 				</a>
 			</div>
 
-			<div>{/* <ButtonBack /> */}</div>
+			<div>
+				<BackButton />
+			</div>
 		</div>
 	)
 }

@@ -2,11 +2,9 @@
 import { ChangeEvent, useState } from 'react'
 import styles from './Form.module.css'
 import Button from './Button'
-import { useNavigate } from 'react-router-dom'
+import BackButton from './BackButton'
 
 function Form() {
-	const navigate = useNavigate()
-
 	const [cityName, setCityName] = useState('')
 	const [country, setCountry] = useState('')
 	const [date, setDate] = useState(new Date())
@@ -14,11 +12,6 @@ function Form() {
 
 	function handleChangeDate(e: ChangeEvent<HTMLInputElement>): void {
 		setDate(new Date(e.target.value))
-	}
-
-	function handleBack(e: React.MouseEvent<HTMLButtonElement>): void {
-		e.preventDefault()
-		navigate(-1)
 	}
 
 	return (
@@ -55,9 +48,7 @@ function Form() {
 				<Button onClick={() => {}} type='primary'>
 					Add
 				</Button>
-				<Button onClick={handleBack} type='back'>
-					&larr; Back
-				</Button>
+				<BackButton />
 			</div>
 		</form>
 	)
