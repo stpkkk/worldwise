@@ -1,3 +1,3 @@
-import { CitiesProvider } from './CitiesContext'
+import { CitiesProvider, useCities } from './CitiesContext'
 
-export { CitiesProvider }
+export { CitiesProvider, useCities }
