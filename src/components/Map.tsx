@@ -12,13 +12,21 @@ import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
 import styles from './Map.module.css'
 import { useCities } from '../context'
 import { flagEmojiToPNG } from '../utils'
+import { useGeolocation } from '../hooks'
+import Button from './Button'
 
 function Map() {
 	const { cities } = useCities()
-
-	const [mapPosition, setMapPosition] = useState<LatLngExpression>([40, 0])
-
+	const [mapPosition, setMapPosition] = useState<LatLngExpression>([
+		61.7894508, 34.3244285,
+	])
 	const [searchParams] = useSearchParams()
+	const {
+		isLoading: isLoadingPosition,
+		getPosition,
+		position: geolocationPosition,
+	} = useGeolocation()
+
 	const mapLat = searchParams.get('lat')
 	const mapLng = searchParams.get('lng')
 
@@ -26,12 +34,22 @@ function Map() {
 		if (mapLat && mapLng) setMapPosition([Number(mapLat), Number(mapLng)])
 	}, [mapLat, mapLng])
 
+	useEffect(() => {
+		if (geolocationPosition)
+			setMapPosition([geolocationPosition.lat, geolocationPosition.lng])
+	}, [geolocationPosition])
+
 	return (
 		<div className={styles.mapContainer}>
+			{!geolocationPosition && (
+				<Button type='position' onClick={getPosition}>
+					{isLoadingPosition ? 'Loading...' : 'Use your position'}
+				</Button>
+			)}
 			<MapContainer
 				className={styles.map}
 				center={mapPosition}
-				zoom={6}
+				zoom={8}
 				scrollWheelZoom={true}
 			>
 				<TileLayer
