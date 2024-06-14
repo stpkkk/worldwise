@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {
 	MapContainer,
 	Marker,
@@ -12,23 +12,20 @@ import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
 import styles from './Map.module.css'
 import { useCities } from '../context'
 import { flagEmojiToPNG } from '../utils'
-import { useGeolocation } from '../hooks'
+import { useGeolocation, useUrlPosition } from '../hooks'
 import Button from './Button'
 
 function Map() {
 	const { cities } = useCities()
+	const [mapLat, mapLng] = useUrlPosition()
 	const [mapPosition, setMapPosition] = useState<LatLngExpression>([
 		61.7894508, 34.3244285,
 	])
-	const [searchParams] = useSearchParams()
 	const {
 		isLoading: isLoadingPosition,
 		getPosition,
 		position: geolocationPosition,
 	} = useGeolocation()
-
-	const mapLat = searchParams.get('lat')
-	const mapLng = searchParams.get('lng')
 
 	useEffect(() => {
 		if (mapLat && mapLng) setMapPosition([Number(mapLat), Number(mapLng)])

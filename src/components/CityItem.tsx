@@ -25,6 +25,8 @@ function CityItem({ city }: CityItemProps) {
 		return (currentCity as CityType).id !== undefined
 	}
 
+	console.log('emoji:', emoji)
+
 	return (
 		<li>
 			<Link
