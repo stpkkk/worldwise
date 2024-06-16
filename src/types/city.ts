@@ -1,4 +1,7 @@
-export type Position = { lat: number; lng: number }
+export type Position = {
+	lat: number
+	lng: number
+}
 export type CityType = {
 	cityName: string
 	country: string
@@ -6,5 +9,5 @@ export type CityType = {
 	date: Date
 	notes: string
 	position: Position
-	id: string
+	id?: string
 }

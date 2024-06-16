@@ -56,7 +56,7 @@ function Map() {
 				{cities.map(city => (
 					<Marker position={city.position} key={city.id}>
 						<Popup className={styles.popup}>
-							<span>{flagEmojiToPNG(city.emoji)}</span>
+							<span>{city.emoji && flagEmojiToPNG(city.emoji)}</span>
 							<span>{city.cityName}</span>
 						</Popup>
 					</Marker>

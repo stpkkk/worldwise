@@ -25,7 +25,7 @@ function CityItem({ city }: CityItemProps) {
 		return (currentCity as CityType).id !== undefined
 	}
 
-	console.log('emoji:', emoji)
+	if (!date || !emoji) return
 
 	return (
 		<li>
@@ -35,11 +35,11 @@ function CityItem({ city }: CityItemProps) {
 						? ` ${styles['CityItem--active']}`
 						: ''
 				}`}
-				to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+				to={`${id}?lat=${position?.lat}&lng=${position?.lng}`}
 			>
 				<span className={styles.emoji}>{flagEmojiToPNG(emoji)}</span>
 				<h3 className={styles.name}>{cityName}</h3>
-				<time className={styles.date}>({formatDate(date)})</time>
+				<time className={styles.date}>({formatDate(date) || null})</time>
 				<button className={styles.deleteBtn}>&times;</button>
 			</Link>
 		</li>
