@@ -16,7 +16,7 @@ const formatDate = (date: Date | string) =>
 	}).format(new Date(date))
 
 function CityItem({ city }: CityItemProps) {
-	const { currentCity } = useCities()
+	const { currentCity, deleteCity } = useCities()
 	const { id, cityName, emoji, date, position } = city
 
 	const isCurrentCity = (
@@ -25,7 +25,10 @@ function CityItem({ city }: CityItemProps) {
 		return (currentCity as CityType).id !== undefined
 	}
 
-	if (!date || !emoji) return
+	function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+		e.preventDefault()
+		deleteCity(id)
+	}
 
 	return (
 		<li>
@@ -40,7 +43,9 @@ function CityItem({ city }: CityItemProps) {
 				<span className={styles.emoji}>{flagEmojiToPNG(emoji)}</span>
 				<h3 className={styles.name}>{cityName}</h3>
 				<time className={styles.date}>({formatDate(date) || null})</time>
-				<button className={styles.deleteBtn}>&times;</button>
+				<button className={styles.deleteBtn} onClick={handleClick}>
+					&times;
+				</button>
 			</Link>
 		</li>
 	)

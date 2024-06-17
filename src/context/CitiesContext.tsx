@@ -55,11 +55,30 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 					'Content-Type': 'application/json',
 				},
 			})
+
+			if (!res.ok) throw new Error('There was an error creating a city!')
+
 			const data = await res.json()
 
 			setCities(cities => [...cities, data])
 		} catch (error) {
-			console.log(error)
+			console.log((error as Error).message)
+		} finally {
+			setIsLoading(false)
+		}
+	}
+
+	async function deleteCity(id?: string) {
+		try {
+			setIsLoading(true)
+			const res = await fetch(`${BASE_URL}/cities/${id}`, { method: 'DELETE' })
+
+			if (!res.ok) throw new Error('There was an error deleting a city!')
+
+			const newCities = cities.filter(city => city.id !== id)
+			setCities(newCities)
+		} catch (error) {
+			console.log((error as Error).message)
 		} finally {
 			setIsLoading(false)
 		}
@@ -71,7 +90,14 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 
 	return (
 		<CitiesContext.Provider
-			value={{ cities, isLoading, getCity, currentCity, createCity }}
+			value={{
+				cities,
+				isLoading,
+				getCity,
+				currentCity,
+				createCity,
+				deleteCity,
+			}}
 		>
 			{children}
 		</CitiesContext.Provider>

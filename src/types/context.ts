@@ -5,5 +5,6 @@ export type CitiesContextType = {
 	isLoading: boolean
 	currentCity: CityType | {}
 	getCity: (id?: string) => Promise<void>
+	deleteCity: (id?: string) => Promise<void>
 	createCity: (newCity: CityType) => Promise<void>
 }
