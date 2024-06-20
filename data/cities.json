@@ -1,15 +1,27 @@
 {
   "cities": [
     {
-      "id": "d464",
-      "cityName": "Vilhena",
-      "country": "Brazil",
-      "emoji": "🇧🇷",
-      "date": "2024-06-16T16:20:12.595Z",
-      "notes": "",
+      "id": "d46b",
+      "cityName": "Karstula",
+      "country": "Finland",
+      "emoji": "🇫🇮",
+      "date": "2024-06-19T20:43:44.368Z",
+      "notes": "asd",
       "position": {
-        "lat": -12.382928338487396,
-        "lng": -60.46844312453175
+        "lat": 62.87032286609085,
+        "lng": 25.180915029482115
+      }
+    },
+    {
+      "id": "99a7",
+      "cityName": "Petrozavodsk",
+      "country": "Russian Federation (the)",
+      "emoji": "🇷🇺",
+      "date": "2024-06-19T20:48:11.969Z",
+      "notes": "gdf",
+      "position": {
+        "lat": 61.61086996145882,
+        "lng": 34.079613604856604
       }
     }
   ]
