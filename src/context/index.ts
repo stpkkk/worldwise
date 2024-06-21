@@ -1,3 +1,4 @@
 import { CitiesProvider, useCities } from './CitiesContext'
+import { AuthProvider, useAuth } from './FakeAuthContext'
 
-export { CitiesProvider, useCities }
+export { CitiesProvider, useCities, AuthProvider, useAuth }

@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { CitiesContextType, CityType } from '../types'
 
-interface CitiesProviderProps {
+type CitiesProviderProps = {
 	children: ReactNode
 }
 
@@ -18,7 +18,7 @@ type CitiesState = {
 	error: string
 }
 
-export type Actions =
+export type CitiesActions =
 	| { type: 'cities/loaded'; payload: CityType[] }
 	| { type: 'city/loaded'; payload: CityType }
 	| { type: 'city/created'; payload: CityType }
@@ -27,9 +27,10 @@ export type Actions =
 	| { type: 'rejected'; payload: string }
 
 const BASE_URL = 'http://localhost:8000'
+
 const CitiesContext = createContext<CitiesContextType | undefined>(undefined)
 
-function reducer(state: CitiesState, action: Actions): CitiesState {
+function reducer(state: CitiesState, action: CitiesActions): CitiesState {
 	switch (action.type) {
 		case 'loading': {
 			return { ...state, isLoading: true }
@@ -60,7 +61,7 @@ function reducer(state: CitiesState, action: Actions): CitiesState {
 			return { ...state, error: action.payload }
 		}
 		default:
-			throw new Error('Unknown action')
+			throw new Error('Unknown city action')
 	}
 }
 
@@ -71,6 +72,7 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 		isLoading: false,
 		error: '',
 	}
+
 	const [{ cities, currentCity, isLoading, error }, dispatch] = useReducer(
 		reducer,
 		initialState
@@ -81,6 +83,9 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 			dispatch({ type: 'loading' })
 			try {
 				const res = await fetch(`${BASE_URL}/cities`)
+
+				if (!res.ok) throw new Error('There was an error fetching a cities!')
+
 				const data = await res.json()
 				dispatch({ type: 'cities/loaded', payload: data })
 			} catch (error) {
@@ -96,6 +101,9 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 		dispatch({ type: 'loading' })
 		try {
 			const res = await fetch(`${BASE_URL}/cities/${id}`)
+
+			if (!res.ok) throw new Error('There was an error to get a city!')
+
 			const data = await res.json()
 			dispatch({ type: 'city/loaded', payload: data })
 		} catch (error) {

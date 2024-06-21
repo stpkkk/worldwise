@@ -1,4 +1,4 @@
-import { Sidebar, Map } from '../components'
+import { Sidebar, Map, User } from '../components'
 import styles from './AppLayout.module.css'
 
 function AppLayout() {
@@ -6,6 +6,7 @@ function AppLayout() {
 		<div className={styles.app}>
 			<Sidebar />
 			<Map />
+			<User />
 		</div>
 	)
 }

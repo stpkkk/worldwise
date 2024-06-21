@@ -1,27 +1,15 @@
 {
   "cities": [
     {
-      "id": "d46b",
-      "cityName": "Karstula",
-      "country": "Finland",
-      "emoji": "🇫🇮",
-      "date": "2024-06-19T20:43:44.368Z",
-      "notes": "asd",
-      "position": {
-        "lat": 62.87032286609085,
-        "lng": 25.180915029482115
-      }
-    },
-    {
-      "id": "99a7",
-      "cityName": "Petrozavodsk",
+      "id": "e7aa",
+      "cityName": "Pryazha",
       "country": "Russian Federation (the)",
       "emoji": "🇷🇺",
-      "date": "2024-06-19T20:48:11.969Z",
-      "notes": "gdf",
+      "date": "2024-06-20T20:36:24.033Z",
+      "notes": "asda",
       "position": {
-        "lat": 61.61086996145882,
-        "lng": 34.079613604856604
+        "lat": 61.829607773274766,
+        "lng": 33.91482023599512
       }
     }
   ]
