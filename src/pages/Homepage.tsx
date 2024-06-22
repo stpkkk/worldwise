@@ -5,6 +5,7 @@ import { useAuth } from '../context'
 
 export default function Homepage() {
 	const { isAuthenticated } = useAuth()
+
 	return (
 		<main className={styles.homepage}>
 			<PageNav />

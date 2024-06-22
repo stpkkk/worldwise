@@ -12,10 +12,7 @@ export default function Login() {
 
 	function handleSubmitLogin(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-
-		if (email && password && !isAuthenticated) {
-			login(email, password)
-		}
+		if (email && password && !isAuthenticated) login(email, password)
 	}
 
 	useEffect(() => {

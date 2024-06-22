@@ -21,6 +21,13 @@ export type AuthActions =
 	| { type: 'login'; payload: UserType | null }
 	| { type: 'logout' }
 
+const FAKE_USER = {
+	name: 'Jack',
+	email: 'jack@example.com',
+	password: 'qwerty',
+	avatar: 'https://i.pravatar.cc/100?u=zz',
+}
+
 function reducer(state: AuthState, action: AuthActions): AuthState {
 	switch (action.type) {
 		case 'login': {
@@ -43,13 +50,6 @@ function reducer(state: AuthState, action: AuthActions): AuthState {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
-
-const FAKE_USER = {
-	name: 'Jack',
-	email: 'jack@example.com',
-	password: 'qwerty',
-	avatar: 'https://i.pravatar.cc/100?u=zz',
-}
 
 function AuthProvider({ children }: AuthProviderProps) {
 	const initialState = {

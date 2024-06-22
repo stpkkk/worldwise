@@ -6,6 +6,7 @@ import {
 	PageNotFound,
 	Pricing,
 	Product,
+	ProtectedRoute,
 } from './pages'
 import { City, CityList, CountryList, Form } from './components'
 import { AuthProvider, CitiesProvider } from './context'
@@ -20,7 +21,15 @@ function App() {
 						<Route path='pricing' element={<Pricing />} />
 						<Route path='product' element={<Product />} />
 						<Route path='login' element={<Login />} />
-						<Route path='app' element={<AppLayout />}>
+
+						<Route
+							path='app'
+							element={
+								<ProtectedRoute>
+									<AppLayout />
+								</ProtectedRoute>
+							}
+						>
 							<Route index element={<Navigate replace to='cities' />} />
 							<Route path='cities' element={<CityList />} />
 							<Route path='cities/:id' element={<City />} />
