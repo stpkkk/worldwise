@@ -53,7 +53,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 function AuthProvider({ children }: AuthProviderProps) {
 	const initialState = {
-		user: {},
+		user: null,
 		isAuthenticated: false,
 	}
 
