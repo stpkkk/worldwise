@@ -6,6 +6,7 @@ import {
 	useReducer,
 } from 'react'
 import { CitiesContextType, CityType } from '../types'
+import axios from 'axios'
 
 type CitiesProviderProps = {
 	children: ReactNode
@@ -82,11 +83,12 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 		async function fetchCities() {
 			dispatch({ type: 'loading' })
 			try {
-				const res = await fetch(`${BASE_URL}/cities`)
+				const res = await axios.get('/api/cities')
 
-				if (!res.ok) throw new Error('There was an error fetching a cities!')
+				if (res.status !== 200)
+					throw new Error('There was an error fetching a cities!')
 
-				const data = await res.json()
+				const data = await res.data.cities
 				dispatch({ type: 'cities/loaded', payload: data })
 			} catch (error) {
 				dispatch({ type: 'rejected', payload: (error as Error).message })
@@ -95,16 +97,17 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 		fetchCities()
 	}, [])
 
-	async function getCity(id?: string) {
+	async function getCity(id: string) {
 		if ('id' in currentCity && id === currentCity.id) return
 
 		dispatch({ type: 'loading' })
 		try {
-			const res = await fetch(`${BASE_URL}/cities/${id}`)
+			const res = await axios.get(`/api/cities/${id}`)
 
-			if (!res.ok) throw new Error('There was an error to get a city!')
+			if (res.status !== 200)
+				throw new Error('There was an error getting the city!')
 
-			const data = await res.json()
+			const data = res.data
 			dispatch({ type: 'city/loaded', payload: data })
 		} catch (error) {
 			dispatch({ type: 'rejected', payload: (error as Error).message })
@@ -114,29 +117,25 @@ function CitiesProvider({ children }: CitiesProviderProps) {
 	async function createCity(newCity: CityType) {
 		dispatch({ type: 'loading' })
 		try {
-			const res = await fetch(`${BASE_URL}/cities`, {
-				method: 'POST',
-				body: JSON.stringify(newCity),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
+			const res = await axios.post('/api/cities', newCity)
 
-			if (!res.ok) throw new Error('There was an error creating a city!')
+			if (res.status !== 201)
+				throw new Error('There was an error creating the city!')
 
-			const data = await res.json()
+			const data = res.data
 			dispatch({ type: 'city/created', payload: data })
 		} catch (error) {
 			dispatch({ type: 'rejected', payload: (error as Error).message })
 		}
 	}
 
-	async function deleteCity(id?: string) {
+	async function deleteCity(id: string) {
 		dispatch({ type: 'loading' })
 		try {
-			const res = await fetch(`${BASE_URL}/cities/${id}`, { method: 'DELETE' })
+			const res = await axios.delete(`/api/cities/${id}`)
 
-			if (!res.ok) throw new Error('There was an error deleting a city!')
+			if (res.status !== 200)
+				throw new Error('There was an error deleting the city!')
 
 			dispatch({ type: 'city/deleted', payload: id })
 		} catch (error) {

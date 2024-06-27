@@ -38,7 +38,7 @@ function CityItem({ city }: CityItemProps) {
 						? ` ${styles['CityItem--active']}`
 						: ''
 				}`}
-				to={`${id}?lat=${position?.lat}&lng=${position?.lng}`}
+				to={`${id}?lat=${position.lat}&lng=${position.lng}`}
 			>
 				<span className={styles.emoji}>{flagEmojiToPNG(emoji)}</span>
 				<h3 className={styles.name}>{cityName}</h3>

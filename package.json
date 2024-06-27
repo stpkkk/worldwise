@@ -4,13 +4,14 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "concurrently \"npm run server\" \"vite\"",
+		"dev": "vite",
 		"build": "tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview",
-		"server": "json-server --watch data/cities.json --port 8000 delay 500"
+		"preview": "vite preview"
 	},
 	"dependencies": {
+		"axios": "^1.7.2",
+		"axios-mock-adapter": "^1.22.0",
 		"concurrently": "^8.2.2",
 		"json-server": "^1.0.0-beta.0",
 		"leaflet": "^1.9.4",

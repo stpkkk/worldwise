@@ -9,5 +9,5 @@ export type CityType = {
 	date: Date
 	notes: string
 	position: Position
-	id?: string
+	id: string
 }

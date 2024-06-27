@@ -5,7 +5,7 @@ export type CitiesContextType = {
 	isLoading: boolean
 	currentCity: CityType | {}
 	error: string
-	getCity: (id?: string) => Promise<void>
-	deleteCity: (id?: string) => Promise<void>
+	getCity: (id: string) => Promise<void>
+	deleteCity: (id: string) => Promise<void>
 	createCity: (newCity: CityType) => Promise<void>
 }
