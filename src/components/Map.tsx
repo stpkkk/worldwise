@@ -9,10 +9,10 @@ import {
 	useMapEvents,
 } from 'react-leaflet'
 import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
-import styles from './Map.module.css'
-import { useCities } from '../context'
 import { flagEmojiToPNG } from '../utils'
+import { useCities } from '../context'
 import { useGeolocation, useUrlPosition } from '../hooks'
+import styles from './Map.module.css'
 import Button from './Button'
 
 function Map() {
