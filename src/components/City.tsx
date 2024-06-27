@@ -20,7 +20,7 @@ function City() {
 	const { getCity, currentCity, isLoading } = useCities()
 
 	useEffect(() => {
-		getCity(id)
+		if (id) getCity(id)
 	}, [id])
 
 	const { cityName, emoji, date, notes } = currentCity as CityType

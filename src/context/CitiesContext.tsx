@@ -27,8 +27,6 @@ export type CitiesActions =
 	| { type: 'loading' }
 	| { type: 'rejected'; payload: string }
 
-const BASE_URL = 'http://localhost:8000'
-
 const CitiesContext = createContext<CitiesContextType | undefined>(undefined)
 
 function reducer(state: CitiesState, action: CitiesActions): CitiesState {

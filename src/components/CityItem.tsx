@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { CityType } from '../types'
-import { flagEmojiToPNG } from '../utils'
 import styles from './CityItem.module.css'
 import { useCities } from '../context'
+import { flagEmojiToPNG } from '../utils'
 
 type CityItemProps = {
 	city: CityType

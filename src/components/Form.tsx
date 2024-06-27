@@ -51,6 +51,7 @@ function Form() {
 				lat: Number(mapLat),
 				lng: Number(mapLng),
 			},
+			id: '',
 		}
 
 		await createCity(newCity)
