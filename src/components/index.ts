@@ -15,6 +15,7 @@ import CityItem from './CityItem'
 import CountryList from './CountryList'
 import Button from './Button'
 import BackButton from './BackButton'
+import FlagImageFromEmoji from './FlagImageFromEmoji'
 
 export {
 	PageNav,
@@ -34,4 +35,5 @@ export {
 	CityItem,
 	Button,
 	BackButton,
+	FlagImageFromEmoji,
 }

@@ -4,13 +4,13 @@ import DatePicker from 'react-datepicker'
 
 import { useCities } from '../context'
 import { useUrlPosition } from '../hooks'
-import { flagEmojiToPNG } from '../utils'
 import Button from './Button'
 import BackButton from './BackButton'
 import Spinner from './Spinner'
 import Message from './Message'
 import styles from './Form.module.css'
 import 'react-datepicker/dist/react-datepicker.css'
+import FlagImageFromEmoji from './FlagImageFromEmoji'
 
 export function convertToEmoji(countryCode: string) {
 	if (!countryCode) return ''
@@ -113,7 +113,9 @@ function Form() {
 					onChange={e => setCityName(e.target.value)}
 					value={cityName}
 				/>
-				<span className={styles.flag}>{emoji && flagEmojiToPNG(emoji)}</span>
+				<span className={styles.flag}>
+					{emoji && <FlagImageFromEmoji flag={emoji} />}
+				</span>
 			</div>
 
 			<div className={styles.row}>

@@ -9,11 +9,11 @@ import {
 	useMapEvents,
 } from 'react-leaflet'
 import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
-import { flagEmojiToPNG } from '../utils'
 import { useCities } from '../context'
 import { useGeolocation, useUrlPosition } from '../hooks'
 import styles from './Map.module.css'
 import Button from './Button'
+import FlagImageFromEmoji from './FlagImageFromEmoji'
 
 function Map() {
 	const { cities } = useCities()
@@ -56,7 +56,9 @@ function Map() {
 				{cities.map(city => (
 					<Marker position={city.position} key={city.id}>
 						<Popup className={styles.popup}>
-							<span>{city.emoji && flagEmojiToPNG(city.emoji)}</span>
+							<span>
+								{city.emoji && <FlagImageFromEmoji flag={city.emoji} />}
+							</span>
 							<span>{city.cityName}</span>
 						</Popup>
 					</Marker>
