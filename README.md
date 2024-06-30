@@ -1,4 +1,4 @@
-## <a href="https://stpk-worldwise.netlify.app/">WorldWise - A React app to helps you track your travels and create a visual record of your adventures</a>
+## <a href="https://stpk-worldwise.netlify.app/">WorldWise</a> - A React app to helps you track your travels and create a visual record of your adventures
 
 ## Overview
 
@@ -25,15 +25,15 @@ This application is currently in development, but it is already a useful tool fo
 
 ## Screenshots
 
-![home-page](public/screenshots/home-page.webp)
-![pricing-page](public/screenshots/pricing-page.webp)
-![product-page](public/screenshots/product-page.webp)
-![login-page](public/screenshots/login-page.webp)
-![app-page](public/screenshots/app-page.webp)
-![add-city](public/screenshots/add-city.webp)
-![display-cities](public/screenshots/display-cities.webp)
-![display-countries](public/screenshots/display-countries.webp)
-![city-detail](public/screenshots/city-detail.webp)
+![home-page](public/screenshots/home-page.png)
+![pricing-page](public/screenshots/pricing-page.png)
+![product-page](public/screenshots/product-page.png)
+![login-page](public/screenshots/login-page.png)
+![app-page](public/screenshots/app-page.png)
+![add-city](public/screenshots/add-city.png)
+![display-cities](public/screenshots/display-cities.png)
+![display-countries](public/screenshots/display-countries.png)
+![city-detail](public/screenshots/city-detail.png)
 
 ## Usage
 
